@@ -11,14 +11,14 @@ import java.util.Comparator;
  * @author Gustavo
  */
 public class ComparaAlunoPorAlturaDecrescente implements Comparator<Aluno> {
+
     @Override
     public int compare(Aluno a1, Aluno a2) {
-//        return Double.compare(a2.getAltura(), a1.getAltura());
-        if(a1.getAltura() > a2.getAltura()) {
+        if (a1.getAltura() > a2.getAltura()) {
             return -1;
-        } else if(a1.getAltura() < a2.getAltura()) {
+        } else if (a1.getAltura() < a2.getAltura()) {
             return 1;
-        } else{
+        } else {
             return 0;
         }
     }

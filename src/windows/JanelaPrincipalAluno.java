@@ -8,8 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -34,15 +32,28 @@ public class JanelaPrincipalAluno extends JanelaVisualizarAluno {
         Scanner leitor = new Scanner(System.in);
         Vector dados = new Vector<>();
         String valor;
-        for (int i = 0; i < colunas.size(); i++) {
+        int valorInt;
+        double valorDouble;
+        for (int i = 0; i < colunas.size() - 2; i++) {
             System.out.println(colunas.get(i));
             valor = leitor.next();
             dados.add(valor);
         }
+        System.out.println(colunas.get(3));
+        valorInt = leitor.nextInt();
+        dados.add(valorInt);
+        
+        System.out.println(colunas.get(4));
+        valorDouble = leitor.nextDouble();
+        dados.add(valorDouble);
+        
+        
         System.out.println("");
         System.out.println("===========================================================================================================");
         return dados;
     }
+    
+    
 
     @Override
     public void executar() {
@@ -55,6 +66,7 @@ public class JanelaPrincipalAluno extends JanelaVisualizarAluno {
 
             opcao = leitorOpcao.nextInt();
             // sair
+
             if (opcao == 0) {
                 break;
             } // ordenação
@@ -75,7 +87,7 @@ public class JanelaPrincipalAluno extends JanelaVisualizarAluno {
                 } catch (FileNotFoundException ex) {
                     System.out.println("Erro: Arquivo não encontrado. Verifique o caminho do arquivo: " + ex.getMessage());
                 } catch (IOException ex) {
-                    System.out.println("Erro: Ocorreu um problema ao ler/escrever o arquivo: " + ex.getMessage());
+                    System.out.println("Erro: Ocorreu um problema ao ler o arquivo: " + ex.getMessage());
                     System.out.println("Arquivo: " + ex.getClass().getName());
                 } catch (ClassNotFoundException ex) {
                     System.out.println("Erro: Classe não encontrada: " + ex.getMessage());
@@ -93,7 +105,7 @@ public class JanelaPrincipalAluno extends JanelaVisualizarAluno {
                 } catch (FileNotFoundException ex) {
                     System.out.println("Erro: Arquivo não encontrado. Verifique o caminho do arquivo: " + ex.getMessage());
                 } catch (IOException ex) {
-                    System.out.println("Erro: Ocorreu um problema ao ler/escrever o arquivo: " + ex.getMessage());
+                    System.out.println("Erro: Ocorreu um problema ao ler o arquivo: " + ex.getMessage());
                     System.out.println("Arquivo: " + ex.getClass().getName());
                 } catch (ClassNotFoundException ex) {
                     System.out.println("Erro: Classe não encontrada: " + ex.getMessage());
@@ -109,7 +121,7 @@ public class JanelaPrincipalAluno extends JanelaVisualizarAluno {
                 } catch (FileNotFoundException ex) {
                     System.out.println("Erro: Arquivo não encontrado. Verifique o caminho do arquivo: " + ex.getMessage());
                 } catch (IOException ex) {
-                    System.out.println("Erro: Ocorreu um problema ao ler/escrever o arquivo: " + ex.getMessage());
+                    System.out.println("Erro: Ocorreu um problema ao ler o arquivo: " + ex.getMessage());
                     System.out.println("Arquivo: " + ex.getClass().getName());
                 } catch (ClassNotFoundException ex) {
                     System.out.println("Erro: Classe não encontrada: " + ex.getMessage());

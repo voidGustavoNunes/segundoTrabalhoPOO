@@ -13,6 +13,13 @@ import java.util.Comparator;
 public class ComparaAlunoPorIdadeCrescente implements Comparator<Aluno> {
 
     public int compare(Aluno a1, Aluno a2) {
-        return Integer.compare(a1.getIdade(), a2.getIdade());
+        if (a1.getIdade() > a2.getIdade()) {
+            return 1;
+        } else if (a1.getIdade() < a2.getIdade()) {
+            return -1;
+        } else {
+            return 0;
+        }
+
     }
 }

@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Connection;
 import java.util.Collections;
 import java.util.Vector;
 
@@ -71,37 +72,45 @@ public class AlunoFileDao {
 
     public Vector<Aluno> obterAlunos(String coluna, boolean crescente) throws FileNotFoundException, IOException, ClassNotFoundException {
         Vector<Aluno> alunos = this.obterAlunos();
-        if (coluna.equals("codigo")) {
-            if (crescente) {
-                Collections.sort(alunos, new ComparatorAlunoPorCodigoCrescente());
-            } else {
-                Collections.sort(alunos, new ComparatorAlunoPorCodigoDecrescente());
+        switch (coluna) {
+            case "codigo" -> {
+                if (crescente) {
+                    Collections.sort(alunos, new ComparatorAlunoPorCodigoCrescente());
+                } else {
+                    Collections.sort(alunos, new ComparatorAlunoPorCodigoDecrescente());
+                }
             }
-        } else if (coluna.equals("nome")) {
-            if (crescente) {
-                Collections.sort(alunos, new ComparatorAlunoPorNomeCrescente());
-            } else {
-                Collections.sort(alunos, new ComparatorAlunoPorNomeDecrescente());
+            case "nome" -> {
+                if (crescente) {
+                    Collections.sort(alunos, new ComparatorAlunoPorNomeCrescente());
+                } else {
+                    Collections.sort(alunos, new ComparatorAlunoPorNomeDecrescente());
+                }
             }
-        } else if (coluna.equals("genero")) {
-            if (crescente) {
-                Collections.sort(alunos, new ComparatorAlunoPorGeneroCrescente());
-            } else {
-                Collections.sort(alunos, new ComparatorAlunoPorGeneroDecrescente());
+            case "genero" -> {
+                if (crescente) {
+                    Collections.sort(alunos, new ComparatorAlunoPorGeneroCrescente());
+                } else {
+                    Collections.sort(alunos, new ComparatorAlunoPorGeneroDecrescente());
+                }
             }
-        } else if (coluna.equals("idade")) {
-            if (crescente){
-                Collections.sort(alunos, new ComparaAlunoPorIdadeCrescente());
+            case "idade" -> {
+                if (crescente){
+                    Collections.sort(alunos, new ComparaAlunoPorIdadeCrescente());
+                }
+                else{
+                    Collections.sort(alunos, new ComparaAlunoPorIdadeDecrescente());
+                }
             }
-            else{
-                Collections.sort(alunos, new ComparaAlunoPorIdadeDecrescente());
+            case "altura" -> {
+                if (crescente){
+                    Collections.sort(alunos, new ComparaAlunoPorAlturaCrescente());
+                }
+                else{
+                    Collections.sort(alunos, new ComparaAlunoPorAlturaDecrescente());
+                }
             }
-        } else if (coluna.equals("altura")) {
-            if (crescente){
-                Collections.sort(alunos, new ComparaAlunoPorAlturaCrescente());
-            }
-            else{
-                Collections.sort(alunos, new ComparaAlunoPorAlturaDecrescente());
+            default -> {
             }
         }
         return alunos;

@@ -76,7 +76,7 @@ public class JanelaVisualizarAluno {
         } catch (FileNotFoundException ex) {
             System.out.println("Erro: Arquivo não encontrado. Verifique o caminho do arquivo: " + ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Erro: Ocorreu um problema ao ler/escrever o arquivo: " + ex.getMessage());
+            System.out.println("Erro: Ocorreu um problema ao ler arquivo: " + ex.getMessage());
             System.out.println("Arquivo: " + ex.getClass().getName());
         } catch (ClassNotFoundException ex) {
             System.out.println("Erro: Classe não encontrada: " + ex.getMessage());
